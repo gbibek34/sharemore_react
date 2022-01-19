@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import postimg from "../assets/images/dummy_img.jpg";
 import userimg from "../assets/images/login.png";
 
 const Post = () => {
   return (
     <>
-      <div className="">
+      <Link to="/post" style={{ textDecoration: "none" }}>
         <div className="card shadow-sm post-card">
           <div className="overflow">
             <img src={postimg} alt="" className="card-img-top post-image" />
@@ -33,7 +34,7 @@ const Post = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };

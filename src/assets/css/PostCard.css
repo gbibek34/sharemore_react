@@ -1,0 +1,59 @@
+.post-card {
+  border-radius: 10px !important;
+}
+
+.post-image {
+  width: 100%;
+  height: 15vw;
+
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+
+  object-fit: cover;
+}
+
+.post-category {
+  font-size: 12px;
+
+  text-transform: uppercase;
+}
+
+.post-description {
+  font-size: 13px;
+
+  display: -webkit-box;
+  overflow: hidden !important;
+  -webkit-box-orient: vertical !important;
+
+  text-overflow: ellipsis !important;
+
+  -webkit-line-clamp: 3 !important;
+}
+
+.author-details {
+  font-size: 12px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.author-img {
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+.author-name-time {
+  display: flex;
+  flex-direction: column;
+}
+
+@media(max-width: 992px) {
+  .home-categories {
+    display: none !important;
+  }
+}
