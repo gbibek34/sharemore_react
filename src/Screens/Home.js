@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Post from "../components/Post";
+import PostCard from "../components/PostCard";
 
 const Home = () => {
   return (
@@ -16,19 +16,32 @@ const Home = () => {
           </p>
         </div>
         <div className="row">
-          <div className="col-md-9 px-3">
-            <h4>Recent Blogs</h4>
+          <div className="col-lg-9 px-3">
+            <h4
+              className="text-center mb-4 font-serifqs"
+              style={{ fontWeight: 800, color: "#4F6367" }}
+            >
+              Recent Blogs
+            </h4>
             <div className="row">
-              <div className="col-md-6">
-                <Post />
+              <div className="col-lg-4">
+                <PostCard />
               </div>
-              <div className="col-md-6">
-                <Post />
+              <div className="col-lg-4">
+                <PostCard />
+              </div>
+              <div className="col-lg-4">
+                <PostCard />
               </div>
             </div>
           </div>
-          <div className="col-md-3 px-3">
-            <h4>Categories</h4>
+          <div className="col-lg-3 px-3 home-categories">
+            <h4
+              className="text-center mb-4 font-serifqs"
+              style={{ fontWeight: 800, color: "#4F6367" }}
+            >
+              Categories
+            </h4>
             <ul>
               <li>Life</li>
               <li>Music</li>

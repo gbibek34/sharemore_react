@@ -1,6 +1,7 @@
 import "./App.css";
 import "./assets/css/Header.css";
 import "./assets/css/Footer.css";
+import "./assets/css/Post.css";
 
 import { Fragment } from "react";
 import { BrowserRouter } from "react-router-dom";
