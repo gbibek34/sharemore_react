@@ -20,8 +20,12 @@
   font-weight: bolder;
 }
 
-.font-serifms {
+.font-serifpp {
   font-family: "Poppins", sans-serif;
+}
+.font-serifppb {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
 }
 
 .main-container {
