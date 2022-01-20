@@ -1,0 +1,16 @@
+footer {
+  font-family: "Poppins", sans-serif;
+
+  color: #dbe4ee;
+  background-color: #4f6367 !important;
+}
+
+footer li {
+  list-style-type: none;
+}
+
+.quick-links {
+  text-decoration: none;
+
+  color: #dbe4ee;
+}

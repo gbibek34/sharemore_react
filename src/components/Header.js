@@ -1,7 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import * as FaIcons from "react-icons/fa";
+// import { SidebarData } from "./SidebarData";
 
 const Header = () => {
-  return <div>Header</div>;
+  const username = "Bibek Ghimire";
+  var isLogged = true;
+  var admin = true;
+
+  // const [sidebar, setSidebar] = useState(false);
+
+  // const showSidebar = () => setSidebar(!sidebar);
+
+  return (
+    <>
+      <Navbar expand="lg" sticky="top" className="navbar-container shadow-lg">
+        <Container className="font-serifqs">
+          <span className="sidebar-item-gap"></span>
+          <Navbar.Brand as={Link} className="navbar-brand" to="/">
+            Share<span>more</span>
+          </Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
+            <Nav>
+              <Nav.Link>
+                <Link to="/" className="nav-link navlink">
+                  Home
+                </Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to="/myposts" className="nav-link navlink">
+                  My Posts
+                </Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to="/more" className="nav-link navlink">
+                  More
+                </Link>
+              </Nav.Link>
+              {isLogged ? (
+                <NavDropdown title="Profile" className="nav-link">
+                  <NavDropdown.Item>
+                    <Link to="/profile" className="drop-link">
+                      {username}
+                    </Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item>
+                    <Link to="/logout" className="drop-link">
+                      Logout
+                    </Link>
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <Link to="/signin" className="btn btn-decor btn-login m-2 px-4">
+                  Login
+                </Link>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
+  );
 };
 
 export default Header;

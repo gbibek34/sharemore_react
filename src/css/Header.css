@@ -1,0 +1,74 @@
+.navbar-container {
+  background-color: #dbe4ee;
+}
+
+.navbar-brand {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.8em !important;
+  font-weight: 800 !important;
+  color: #6c63ff !important;
+}
+
+.navbar-brand span {
+  color: #fe5f55;
+}
+
+.nav-link {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  color: #6c63ff !important;
+}
+
+.drop-link {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  color: #6c63ff;
+  text-decoration: none;
+}
+
+.drop-link:hover {
+  text-decoration: none;
+  color: #6c63ff;
+}
+
+.navlink::after {
+  display: block;
+
+  width: 0;
+  height: 2px;
+
+  content: "";
+  transition: width 0.3s;
+
+  background: #6c63ff;
+}
+
+.navlink:hover::after {
+  width: 100%;
+
+  transition: width 0.3s;
+}
+
+.navlink:hover {
+  color: #6c63ff !important;
+}
+
+.btn-login {
+  width: 120px;
+  font-family: "Quicksand", sans-serif !important;
+  font-size: 1em !important;
+  font-weight: 600 !important;
+  color: #dbe4ee !important;
+  border: 2px solid #6c63ff !important;
+  border-radius: 50px !important;
+  background-color: #6c63ff !important;
+  text-decoration: none !important;
+}
+
+.btn-login:hover {
+  color: #6c63ff !important;
+  border: 2px solid #6c63ff !important;
+  background-color: #dbe4ee !important;
+}
