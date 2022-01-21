@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Row, Form } from "react-bootstrap";
+import { Col, Row, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import userimg from "../assets/images/login.png";
 import readingimg from "../assets/images/reading.svg";

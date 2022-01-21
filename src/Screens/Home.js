@@ -1,8 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
+import axios from "axios";
 
 const Home = () => {
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = await axios.get("/post");
+      setPosts(res.data);
+    };
+    fetchPosts();
+  }, []);
+
   return (
     <>
       <div className="container-fluid p-5">
@@ -25,13 +34,7 @@ const Home = () => {
             </h4>
             <div className="row">
               <div className="col-lg-4">
-                <PostCard />
-              </div>
-              <div className="col-lg-4">
-                <PostCard />
-              </div>
-              <div className="col-lg-4">
-                <PostCard />
+                <PostCard posts={posts} />
               </div>
             </div>
           </div>

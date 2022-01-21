@@ -1,6 +1,5 @@
 import React from "react";
 import * as Fi from "react-icons/fi";
-import background from "../assets/images/dummy_img.jpg";
 
 const PostForm = () => {
   return (

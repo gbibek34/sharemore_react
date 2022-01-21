@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import * as FaIcons from "react-icons/fa";
 // import { SidebarData } from "./SidebarData";
 
 const Header = () => {
   const username = "Bibek Ghimire";
   var isLogged = true;
-  var admin = true;
+  // var admin = true;
 
   // const [sidebar, setSidebar] = useState(false);
 
@@ -24,20 +23,14 @@ const Header = () => {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav>
-              <Nav.Link>
-                <Link to="/" className="nav-link navlink">
-                  Home
-                </Link>
+              <Nav.Link as={Link} to="/" className="nav-link navlink">
+                Home
               </Nav.Link>
-              <Nav.Link>
-                <Link to="/myposts" className="nav-link navlink">
-                  My Posts
-                </Link>
+              <Nav.Link as={Link} to="/myposts" className="nav-link navlink">
+                My Posts
               </Nav.Link>
-              <Nav.Link>
-                <Link to="/more" className="nav-link navlink">
-                  More
-                </Link>
+              <Nav.Link as={Link} to="/more" className="nav-link navlink">
+                More
               </Nav.Link>
               {isLogged ? (
                 <NavDropdown title="Profile" className="nav-link">
