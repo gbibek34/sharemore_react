@@ -3,6 +3,7 @@ import "./assets/css/Header.css";
 import "./assets/css/Footer.css";
 import "./assets/css/PostCard.css";
 import "./assets/css/Post.css";
+import "./assets/css/Login.css";
 
 import { Fragment } from "react";
 import { BrowserRouter } from "react-router-dom";
