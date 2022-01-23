@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import * as Bs from "react-icons/bs";
 import * as Fi from "react-icons/fi";
 import userimg from "../assets/images/login.png";
 import background from "../assets/images/dummy_img.jpg";
+import axios from "axios";
 
 const Post = () => {
   const location = useLocation();
-  console.log(location.pathname.split("/")[2]);
+  const path = location.pathname.split("/")[2];
+  const [post, setPost] = useState([]);
+
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await axios.get("/post/" + path);
+      // console.log(res.data);
+      setPost(res.data["msg"]);
+    };
+    getPost();
+  }, [path]);
+
   return (
     <>
       <div className="container-fluid p-5">
@@ -40,29 +52,25 @@ const Post = () => {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <p>MUSIC</p>
-          <h1>React</h1>
+          <p>
+            {/* {post.categories.map((cat) => (
+              <span>{cat.name}</span>
+            ))} */}
+            {console.log(post.categories)}
+          </p>
+          <h1>{post.title}</h1>
           <div>
             <img src={userimg} alt="" className="post-user-image" />
-            <p>Bibek Ghimire</p>
-            <p>2:30 Thursday</p>
+            <p>{post.username}</p>
+            <p>{new Date(post.updatedAt).toDateString()}</p>
           </div>
         </div>
         <div className="px-4 py-5 post-desc-cont">
-          <img src={background} alt="" className="post-img-main" />
-          <p className="px-5 post-desc-main font-serifpp">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-            expedita sunt est pariatur assumenda minus et vel. Corrupti aliquam
-            cumque magni similique delectus libero mollitia accusantium commodi
-            blanditiis! Libero, voluptas! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Fuga expedita sunt est pariatur assumenda minus et
-            vel. Corrupti aliquam cumque magni similique delectus libero
-            mollitia accusantium commodi blanditiis! Libero, voluptas! Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Fuga expedita
-            sunt est pariatur assumenda minus et vel. Corrupti aliquam cumque
-            magni similique delectus libero mollitia accusantium commodi
-            blanditiis! Libero, voluptas!
-          </p>
+          {post.image && (
+            <img src={post.photo} alt="" className="post-img-main" />
+          )}
+
+          <p className="px-5 post-desc-main font-serifpp">{post.description}</p>
         </div>
       </div>
     </>
