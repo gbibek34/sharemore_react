@@ -7,11 +7,10 @@ const Home = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get("/post");
-      setPosts(res.data);
+      setPosts(res.data["msg"]);
     };
     fetchPosts();
   }, []);
-
   return (
     <>
       <div className="container-fluid p-5">
@@ -33,9 +32,12 @@ const Home = () => {
               Recent Blogs
             </h4>
             <div className="row">
-              <div className="col-lg-4">
-                <PostCard posts={posts} />
-              </div>
+              {posts.map((post) => (
+                <div className="col-lg-4" key={post._id}>
+                  <PostCard post={post} />
+                  {console.log(post._id)}
+                </div>
+              ))}
             </div>
           </div>
           <div className="col-lg-3 px-3 home-categories">

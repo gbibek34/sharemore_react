@@ -1,12 +1,14 @@
 import React from "react";
 import { Dropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import * as Bs from "react-icons/bs";
 import * as Fi from "react-icons/fi";
 import userimg from "../assets/images/login.png";
 import background from "../assets/images/dummy_img.jpg";
 
 const Post = () => {
+  const location = useLocation();
+  console.log(location.pathname.split("/")[2]);
   return (
     <>
       <div className="container-fluid p-5">

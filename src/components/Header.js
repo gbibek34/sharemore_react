@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // import { SidebarData } from "./SidebarData";
@@ -23,14 +23,20 @@ const Header = () => {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav>
-              <Nav.Link as={Link} to="/" className="nav-link navlink">
-                Home
+              <Nav.Link>
+                <Link to="/" className="nav-link navlink">
+                  Home
+                </Link>
               </Nav.Link>
-              <Nav.Link as={Link} to="/myposts" className="nav-link navlink">
-                My Posts
+              <Nav.Link>
+                <Link to="/myposts" className="nav-link navlink">
+                  My Posts
+                </Link>
               </Nav.Link>
-              <Nav.Link as={Link} to="/more" className="nav-link navlink">
-                More
+              <Nav.Link>
+                <Link to="/more" className="nav-link navlink">
+                  More
+                </Link>
               </Nav.Link>
               {isLogged ? (
                 <NavDropdown title="Profile" className="nav-link">

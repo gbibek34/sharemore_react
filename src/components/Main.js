@@ -11,7 +11,7 @@ const Main = () => {
     <div className="main-container">
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/post" element={<Post />}></Route>
+        <Route path="/post/:post_id" element={<Post />}></Route>
         <Route path="/post/create" element={<PostForm />}></Route>
         <Route path="/login" element={<Login />}></Route>
       </Routes>

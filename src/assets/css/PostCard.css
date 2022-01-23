@@ -18,6 +18,16 @@
   text-transform: uppercase;
 }
 
+.post-title {
+  display: -webkit-box;
+  overflow: hidden !important;
+  -webkit-box-orient: vertical !important;
+
+  text-overflow: ellipsis !important;
+
+  -webkit-line-clamp: 1 !important;
+}
+
 .post-description {
   font-size: 13px;
 
