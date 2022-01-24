@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const { search } = useLocation();
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("/post");
+      const res = await axios.get("/post" + search);
       setPosts(res.data["msg"]);
     };
     fetchPosts();
-  }, []);
+  }, [search]);
 
   useEffect(() => {
     const fetchCategories = async () => {

@@ -23,20 +23,18 @@ const Header = () => {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav>
-              <Nav.Link>
-                <Link to="/" className="nav-link navlink">
-                  Home
-                </Link>
+              <Nav.Link as={Link} to="/" className="nav-link navlink p-3">
+                Home
               </Nav.Link>
-              <Nav.Link>
-                <Link to="/myposts" className="nav-link navlink">
-                  My Posts
-                </Link>
+              <Nav.Link
+                as={Link}
+                to="/myposts"
+                className="nav-link navlink p-3"
+              >
+                My Posts
               </Nav.Link>
-              <Nav.Link>
-                <Link to="/more" className="nav-link navlink">
-                  More
-                </Link>
+              <Nav.Link as={Link} to="/more" className="nav-link navlink p-3">
+                More
               </Nav.Link>
               {isLogged ? (
                 <NavDropdown title="Profile" className="nav-link">

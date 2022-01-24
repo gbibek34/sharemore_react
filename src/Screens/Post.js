@@ -10,16 +10,17 @@ import axios from "axios";
 const Post = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState({});
 
   useEffect(() => {
     const getPost = async () => {
       const res = await axios.get("/post/" + path);
-      // console.log(res.data);
       setPost(res.data["msg"]);
     };
     getPost();
   }, [path]);
+
+  console.log(post);
 
   return (
     <>
@@ -52,12 +53,10 @@ const Post = () => {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <p>
-            {/* {post.categories.map((cat) => (
-              <span>{cat.name}</span>
-            ))} */}
-            {console.log(post.categories)}
-          </p>
+          <ul>
+            {post.categories &&
+              post.categories.map((category) => <li>{category}</li>)}
+          </ul>
           <h1>{post.title}</h1>
           <div>
             <img src={userimg} alt="" className="post-user-image" />

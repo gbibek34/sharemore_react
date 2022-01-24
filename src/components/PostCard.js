@@ -19,9 +19,9 @@ const Post = ({ post }) => {
           </div>
           <div className="card-body text-dark p-3">
             <p className="post-category">
-              {/* {post.categories.map((category) => (
+              {post.categories.map((category) => (
                 <span>{category.name}</span>
-              ))} */}
+              ))}
             </p>
             <h4
               className="post-title"
