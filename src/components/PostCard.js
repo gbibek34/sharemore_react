@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import userimg from "../assets/images/login.png";
 
 const Post = ({ post }) => {
-  console.log(post);
   return (
     <>
       <Link to={`/post/${post._id}`} style={{ textDecoration: "none" }}>
@@ -20,9 +19,9 @@ const Post = ({ post }) => {
           </div>
           <div className="card-body text-dark p-3">
             <p className="post-category">
-              {post.categories.map((category) => (
+              {/* {post.categories.map((category) => (
                 <span>{category.name}</span>
-              ))}
+              ))} */}
             </p>
             <h4
               className="post-title"

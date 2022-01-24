@@ -4,12 +4,22 @@ import axios from "axios";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get("/post");
       setPosts(res.data["msg"]);
     };
     fetchPosts();
+  }, []);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const res = await axios.get("/category");
+      setCategories(res.data["msg"]);
+    };
+    fetchCategories();
   }, []);
   return (
     <>
@@ -35,7 +45,6 @@ const Home = () => {
               {posts.map((post) => (
                 <div className="col-lg-4" key={post._id}>
                   <PostCard post={post} />
-                  {console.log(post._id)}
                 </div>
               ))}
             </div>
@@ -48,10 +57,9 @@ const Home = () => {
               Categories
             </h4>
             <ul>
-              <li>Life</li>
-              <li>Music</li>
-              <li>Sports</li>
-              <li>Gaming</li>
+              {categories.map((category) => (
+                <li key={category._id}>{category.name}</li>
+              ))}
             </ul>
           </div>
         </div>
