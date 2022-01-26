@@ -53,10 +53,12 @@ const Post = () => {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <ul>
+          <div>
             {post.categories &&
-              post.categories.map((category) => <li>{category}</li>)}
-          </ul>
+              post.categories.map((category, index) => (
+                <p key={index}>{category}</p>
+              ))}
+          </div>
           <h1>{post.title}</h1>
           <div>
             <img src={userimg} alt="" className="post-user-image" />

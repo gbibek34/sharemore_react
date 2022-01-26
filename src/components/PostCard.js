@@ -6,40 +6,43 @@ import userimg from "../assets/images/login.png";
 const Post = ({ post }) => {
   return (
     <>
-      <Link to={`/post/${post._id}`} style={{ textDecoration: "none" }}>
-        <div className="card shadow-sm post-card">
-          <div className="overflow">
-            {post.image && (
-              <img
-                src={post.photo}
-                alt=""
-                className="card-img-top post-image"
-              />
-            )}
-          </div>
-          <div className="card-body text-dark p-3">
-            <p className="post-category">
-              {post.categories.map((category) => (
-                <span>{category.name}</span>
-              ))}
-            </p>
+      <div className="card shadow-sm post-card">
+        <div className="overflow">
+          {post.image && (
+            <img src={post.photo} alt="" className="card-img-top post-image" />
+          )}
+        </div>
+        <div className="card-body text-dark p-3">
+          <p className="post-category">
+            {post.categories.map((category, index) => (
+              <span key={index}>{category.name}</span>
+            ))}
+          </p>
+          <Link to={`/post/${post._id}`} style={{ textDecoration: "none" }}>
             <h4
               className="post-title"
               style={{ fontWeight: 700, color: "#4F6367" }}
             >
               {post.title}
             </h4>
-            <p className="post-description">{post.description}</p>
-            <div className="author-details">
-              <img src={userimg} alt="" className="author-img" />
-              <p className="ml-3 author-name-time mb-0">
-                <span style={{ fontWeight: 600 }}>{post.username}</span>
-                <span>{new Date(post.updatedAt).toDateString()}</span>
-              </p>
-            </div>
+          </Link>
+          <p className="post-description">{post.description}</p>
+          <div className="author-details">
+            <img src={userimg} alt="" className="author-img" />
+            <p className="ml-3 author-name-time mb-0">
+              <Link
+                to={`/?user=${post.username}`}
+                style={{ textDecoration: "none" }}
+              >
+                <span style={{ fontWeight: 600, color: "#4F6367" }}>
+                  {post.username}
+                </span>
+              </Link>
+              <span>{new Date(post.updatedAt).toDateString()}</span>
+            </p>
           </div>
         </div>
-      </Link>
+      </div>
     </>
   );
 };
