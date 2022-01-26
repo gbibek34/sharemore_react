@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PostCard from "../components/PostCard";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -60,7 +60,9 @@ const Home = () => {
             </h4>
             <ul>
               {categories.map((category) => (
-                <li key={category._id}>{category.name}</li>
+                <Link to={`/?categores=${category.name}`}>
+                  <li key={category._id}>{category.name}</li>
+                </Link>
               ))}
             </ul>
           </div>

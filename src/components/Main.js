@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../Screens/Home";
 import Login from "../Screens/Login";
 import Post from "../Screens/Post";
+import Register from "../Screens/Register";
 import PostForm from "./PostForm";
 
 const Main = () => {
@@ -14,6 +15,7 @@ const Main = () => {
         <Route path="/post/:post_id" element={<Post />}></Route>
         <Route path="/post/create" element={<PostForm />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
       </Routes>
     </div>
   );
