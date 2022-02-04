@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Context } from "../context/Context";
+import axios from "axios";
 // import { SidebarData } from "./SidebarData";
 
 const Header = () => {
-  const username = "Bibek Ghimire";
-  var isLogged = true;
-  // var admin = true;
+  var { user, dispatch } = useContext(Context);
 
-  // const [sidebar, setSidebar] = useState(false);
+  const [author, setAuthor] = useState([]);
 
-  // const showSidebar = () => setSidebar(!sidebar);
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+  };
+
+  useEffect(() => {
+    const fetchAuthor = async () => {
+      const config = {
+        headers: {
+          Authorization: "Bearer " + user,
+        },
+      };
+      const res = await axios.get("/user/get", config);
+      setAuthor(res.data["msg"]);
+    };
+    fetchAuthor();
+  }, []);
 
   return (
     <>
@@ -36,22 +51,27 @@ const Header = () => {
               <Nav.Link as={Link} to="/more" className="nav-link navlink p-3">
                 More
               </Nav.Link>
-              {isLogged ? (
-                <NavDropdown title="Profile" className="nav-link">
-                  <NavDropdown.Item>
-                    <Link to="/profile" className="drop-link">
-                      {username}
-                    </Link>
+              {user ? (
+                <NavDropdown title="Profile" className="nav-link pl-3">
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/profile"
+                    className="drop-link"
+                  >
+                    {author.username}
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item>
-                    <Link to="/logout" className="drop-link">
-                      Logout
-                    </Link>
+                  <NavDropdown.Item
+                    as={Link}
+                    to="/"
+                    className="drop-link"
+                    onClick={handleLogout}
+                  >
+                    Logout
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
-                <Link to="/signin" className="btn btn-decor btn-login m-2 px-4">
+                <Link to="/login" className="btn btn-decor btn-login m-2 px-4">
                   Login
                 </Link>
               )}

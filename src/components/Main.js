@@ -16,10 +16,10 @@ const Main = () => {
         <Route path="/" element={<Home />}></Route>
         <Route path="/post/:post_id" element={<Post />}></Route>
         <Route path="/post/create" element={<PostForm />}></Route>
-        <Route path="/login" element={user ? <Login /> : <Home />}></Route>
+        <Route path="/login" element={user ? <Home /> : <Login />}></Route>
         <Route
           path="/register"
-          element={user ? <Register /> : <Home />}
+          element={user ? <Home /> : <Register />}
         ></Route>
       </Routes>
     </div>
