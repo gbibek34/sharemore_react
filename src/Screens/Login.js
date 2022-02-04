@@ -1,37 +1,55 @@
-import React from "react";
-import { Col, Row, Form } from "react-bootstrap";
+import axios from "axios";
+import React, { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
-import userimg from "../assets/images/login.png";
-import readingimg from "../assets/images/reading.svg";
+import { Context } from "../context/Context";
 
 const Login = () => {
+  const refUsername = useRef();
+  const refPassword = useRef();
+  const { dispatch, isFetching } = useContext(Context);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    const res = await axios.post("/user/login", {
+      username: refUsername.current.value,
+      password: refPassword.current.value,
+    });
+    console.log(res.data["msg"]);
+    dispatch({ type: "LOGIN_SUCCESS", payload: res.data["token"] });
+    if (res.data["success"] === false) {
+      dispatch({ type: "LOGIN_FAILURE" });
+      console.log("nyeh");
+    }
+  };
   return (
     <>
-      <div className="container mt-5 mb-5">
-        <Row>
-          <Col lg={4} md={12} sm={12} className="text-center mt-5 p-3">
-            <img src={userimg} alt="" className="login-img mb-5" />
-            <Form>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Control type="email" placeholder="Username" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Control type="password" placeholder="Password" />
-              </Form.Group>
-              <Link className="btn btn-block btn-wide" type="Submit" to="/">
-                Submit
-              </Link>
-            </Form>
-          </Col>
-          <Col lg={8} md={0} sm={0}>
-            <img
-              className="mx-5 login-illustration"
-              style={{ width: 750 }}
-              src={readingimg}
-              alt="Reading"
+      <div className="container-fluid p-5">
+        <div>
+          <span>Login</span>
+          <form onSubmit={handleSubmit}>
+            <label>Username</label>
+            <input
+              type="text"
+              placeholder="Enter your username..."
+              ref={refUsername}
             />
-          </Col>
-        </Row>
+            <label>Password</label>
+            <input
+              type="password"
+              placeholder="Enter your password..."
+              ref={refPassword}
+            />
+            <button type="submit" disabled={isFetching}>
+              Login
+            </button>
+          </form>
+          <button>
+            <Link className="link" to="/register">
+              Register
+            </Link>
+          </button>
+        </div>
       </div>
     </>
   );
