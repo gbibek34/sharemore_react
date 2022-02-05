@@ -9,10 +9,21 @@ const Categories = () => {
     const fetchCategories = async () => {
       const res = await axios.get("/category/");
       setCategories(res.data["msg"]);
-      console.log(res);
+      console.log(res.data["msg"]);
     };
     fetchCategories();
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const name = categoryName;
+    const newCategory = {
+      name,
+    };
+    await axios.post("/category/create", newCategory);
+    location.reload();
+  };
 
   return (
     <>
@@ -65,8 +76,14 @@ const Categories = () => {
                     </button>
                   </div>
                   <div className="modal-body">
-                    <form action="">
-                      <input type="text" name="" id="" placeholder="Category" />
+                    <form onSubmit={handleSubmit}>
+                      <input
+                        type="text"
+                        name=""
+                        id=""
+                        placeholder="Category"
+                        onChange={(e) => setCategoryName(e.target.value)}
+                      />
                       <input
                         type="submit"
                         className="btn btbn-primary"
@@ -87,20 +104,22 @@ const Categories = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row" style={{ fontWeight: 400 }}>
-                  Category ID
-                </th>
-                <th style={{ fontWeight: 400 }}>Category Name</th>
-                <td>
-                  <input
-                    type="submit"
-                    className="btn btn-block btn-sm btn-outline-danger mt-1"
-                    name="remove_product"
-                    value="Delete"
-                  />
-                </td>
-              </tr>
+              {categories.map((category, index) => (
+                <tr key={category._id}>
+                  <th scope="row" style={{ fontWeight: 400 }}>
+                    {index + 1}
+                  </th>
+                  <th style={{ fontWeight: 400 }}>{category.name}</th>
+                  <td>
+                    <input
+                      type="submit"
+                      className="btn btn-block btn-sm btn-outline-danger mt-1"
+                      name="remove_product"
+                      value="Delete"
+                    />
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
