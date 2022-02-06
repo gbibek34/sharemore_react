@@ -11,6 +11,7 @@ const Post = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
+  const publicFolder = "http://localhost:5000/uploads/";
 
   useEffect(() => {
     const getPost = async () => {
@@ -20,7 +21,7 @@ const Post = () => {
     getPost();
   }, [path]);
 
-  console.log(post);
+  console.log(post.image);
 
   return (
     <>
@@ -68,7 +69,11 @@ const Post = () => {
         </div>
         <div className="px-4 py-5 post-desc-cont">
           {post.image && (
-            <img src={post.photo} alt="" className="post-img-main" />
+            <img
+              src={publicFolder + post.image}
+              alt=""
+              className="post-img-main"
+            />
           )}
 
           <p className="px-5 post-desc-main font-serifpp">{post.description}</p>
