@@ -25,7 +25,7 @@ const Header = () => {
       setAuthor(res.data["msg"]);
     };
     fetchAuthor();
-  }, []);
+  }, [user]);
 
   return (
     <>
