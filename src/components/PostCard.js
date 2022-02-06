@@ -3,12 +3,17 @@ import { Link } from "react-router-dom";
 import userimg from "../assets/images/login.png";
 
 const Post = ({ post }) => {
+  const publicFolder = "http://localhost:5000/uploads/";
   return (
     <>
       <div className="card shadow-sm post-card">
         <div className="overflow">
           {post.image && (
-            <img src={post.photo} alt="" className="card-img-top post-image" />
+            <img
+              src={publicFolder + post.image}
+              alt=""
+              className="card-img-top post-image"
+            />
           )}
         </div>
         <div className="card-body text-dark p-3">

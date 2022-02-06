@@ -33,7 +33,7 @@ const Main = () => {
         <Route path="/" element={<Home />}></Route>
         <Route
           path="/post/:post_id"
-          element={user ? <Post /> : <Login />}
+          element={user ? <Post author={author} /> : <Login />}
         ></Route>
         <Route
           path="/post/create"

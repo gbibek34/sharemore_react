@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import * as Bs from "react-icons/bs";
@@ -6,12 +6,14 @@ import * as Fi from "react-icons/fi";
 import userimg from "../assets/images/login.png";
 import background from "../assets/images/dummy_img.jpg";
 import axios from "axios";
+import { Context } from "../context/Context";
 
-const Post = () => {
+const Post = ({ author }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
   const publicFolder = "http://localhost:5000/uploads/";
+  const { user } = useContext(Context);
 
   useEffect(() => {
     const getPost = async () => {
@@ -20,8 +22,6 @@ const Post = () => {
     };
     getPost();
   }, [path]);
-
-  console.log(post.image);
 
   return (
     <>
@@ -34,26 +34,28 @@ const Post = () => {
             borderRadius: "10px",
           }}
         >
-          <Dropdown className="post-dropdown">
-            <Dropdown.Toggle variant="link" bsPrefix="p-0">
-              <Bs.BsThreeDots />
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item>
-                <Link to="#">
-                  <Fi.FiEdit3 />
-                  Edit
-                </Link>
-              </Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item>
-                <Link to="#">
-                  <Fi.FiTrash />
-                  Delete
-                </Link>
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          {post.username === author.username && (
+            <Dropdown className="post-dropdown">
+              <Dropdown.Toggle variant="link" bsPrefix="p-0">
+                <Bs.BsThreeDots />
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item>
+                  <Link to="#">
+                    <Fi.FiEdit3 />
+                    Edit
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item>
+                  <Link to="#">
+                    <Fi.FiTrash />
+                    Delete
+                  </Link>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
           <div>
             {post.categories &&
               post.categories.map((category, index) => (
