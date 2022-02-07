@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Dropdown } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import * as Bs from "react-icons/bs";
 import * as Fi from "react-icons/fi";
 import userimg from "../assets/images/login.png";
@@ -23,6 +23,16 @@ const Post = ({ author }) => {
     getPost();
   }, [path]);
 
+  const handleDelete = async () => {
+    console.log("/post/delete" + path);
+    const config = { headers: { Authorization: "Bearer " + user } };
+    await axios.delete("/post/delete/" + path, config);
+
+    window.location.replace("/");
+  };
+
+  // const handleEdit = async () => {};
+
   return (
     <>
       <div className="container-fluid p-5">
@@ -41,17 +51,17 @@ const Post = ({ author }) => {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item>
-                  <Link to="#">
+                  <button>
                     <Fi.FiEdit3 />
                     Edit
-                  </Link>
+                  </button>
                 </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item>
-                  <Link to="#">
+                  <button onClick={handleDelete}>
                     <Fi.FiTrash />
                     Delete
-                  </Link>
+                  </button>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
