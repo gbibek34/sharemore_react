@@ -10,6 +10,8 @@ import Post from "../Screens/Post";
 import Register from "../Screens/Register";
 import More from "../Screens/More";
 import PostForm from "./PostForm";
+import Profile from "../Screens/Profile";
+import Categories from "../Screens/Categories";
 
 const Main = () => {
   const { user } = useContext(Context);
@@ -40,6 +42,7 @@ const Main = () => {
         ></Route>
         <Route path="/myposts" element={user ? <MyPosts /> : <Login />}></Route>
         <Route path="/more" element={<More />}></Route>
+        <Route path="/profile/:user_id" element={<Profile />}></Route>
         <Route
           path="/post/create"
           element={user ? <PostForm author={author} /> : <Login />}
@@ -48,6 +51,7 @@ const Main = () => {
           path="/post/:post_id"
           element={user ? <Post author={author} /> : <Login />}
         ></Route>
+        <Route path="/categories" element={<Categories />}></Route>
       </Routes>
     </div>
   );

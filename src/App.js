@@ -4,6 +4,7 @@ import "./assets/css/Footer.css";
 import "./assets/css/PostCard.css";
 import "./assets/css/Post.css";
 import "./assets/css/Login.css";
+import "./assets/css/Categories.css";
 
 import { Fragment } from "react";
 import { BrowserRouter } from "react-router-dom";

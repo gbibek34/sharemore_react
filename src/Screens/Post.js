@@ -31,7 +31,7 @@ const Post = ({ author }) => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [update, setUpdate] = useState(false);
+  const [updatemode, setUpdatemode] = useState(false);
 
   // const handleEdit = async () => {};
 
@@ -53,7 +53,7 @@ const Post = ({ author }) => {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item>
-                  <button onClick={() => setUpdate(true)}>
+                  <button onClick={() => setUpdatemode(true)}>
                     <Fi.FiEdit3 />
                     Edit
                   </button>
