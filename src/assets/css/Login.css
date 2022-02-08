@@ -24,7 +24,11 @@
     background-color: #dbe4ee !important;
 }
 
-@media(max-width: 768px) {
+.login-illustration {
+    width: 700px;
+}
+
+@media(max-width: 950px) {
     .login-illustration {
         display: none;
     }

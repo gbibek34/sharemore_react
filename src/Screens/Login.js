@@ -18,11 +18,9 @@ const Login = () => {
       username: refUsername.current.value,
       password: refPassword.current.value,
     });
-    console.log(res.data["msg"]);
     dispatch({ type: "LOGIN_SUCCESS", payload: res.data["token"] });
     if (res.data["success"] === false) {
       dispatch({ type: "LOGIN_FAILURE" });
-      console.log("nyeh");
       setError(true);
     }
   };
@@ -30,7 +28,7 @@ const Login = () => {
     <>
       <div className="container">
         <div className="row">
-          <div className="col-lg-4 mt-5 p-3">
+          <div className="col-lg-4 mt-5">
             <div className="text-center">
               <img src={loginfrmimg} alt="" className="center login-img mb-5" />
             </div>

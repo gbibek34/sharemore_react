@@ -32,14 +32,14 @@ const Register = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-8">
-            <img src={loginpgimg} alt="" className="mx-5 login-illustration" />
+            <img src={loginpgimg} alt="" className="login-illustration" />
           </div>
           <div className="col-lg-4 mt-5 p-3">
             <div className="text-center">
               <img src={loginfrmimg} alt="" className="center login-img mb-5" />
             </div>
             <form onSubmit={handleSubmit}>
-              <div class="form-group">
+              <div className="form-group">
                 <label htmlFor="usernameholder">Username:</label>
                 <input
                   type="text"
