@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import userimg from "../assets/images/login.png";
 
 const Post = ({ post }) => {
   const publicFolder = "http://localhost:5000/uploads/";
@@ -32,7 +31,7 @@ const Post = ({ post }) => {
           </Link>
           <p className="post-description">{post.description}</p>
           <div className="author-details">
-            <img src={userimg} alt="" className="author-img" />
+            <img src="" alt="" className="author-img" />
             <p className="ml-3 author-name-time mb-0">
               <Link
                 to={`/?user=${post.username}`}

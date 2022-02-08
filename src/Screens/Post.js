@@ -3,8 +3,6 @@ import { Dropdown } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import * as Bs from "react-icons/bs";
 import * as Fi from "react-icons/fi";
-import userimg from "../assets/images/login.png";
-import background from "../assets/images/dummy_img.jpg";
 import axios from "axios";
 import { Context } from "../context/Context";
 
@@ -31,6 +29,10 @@ const Post = ({ author }) => {
     window.location.replace("/");
   };
 
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [update, setUpdate] = useState(false);
+
   // const handleEdit = async () => {};
 
   return (
@@ -39,7 +41,7 @@ const Post = ({ author }) => {
         <div
           className="text-center text-white p-3"
           style={{
-            backgroundImage: `url(${background})`,
+            // backgroundImage: `url(${background})`,
             opacity: "0.5",
             borderRadius: "10px",
           }}
@@ -51,7 +53,7 @@ const Post = ({ author }) => {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item>
-                  <button>
+                  <button onClick={() => setUpdate(true)}>
                     <Fi.FiEdit3 />
                     Edit
                   </button>
@@ -74,7 +76,7 @@ const Post = ({ author }) => {
           </div>
           <h1>{post.title}</h1>
           <div>
-            <img src={userimg} alt="" className="post-user-image" />
+            {/* <img src={userimg} alt="" className="post-user-image" /> */}
             <p>{post.username}</p>
             <p>{new Date(post.updatedAt).toDateString()}</p>
           </div>
