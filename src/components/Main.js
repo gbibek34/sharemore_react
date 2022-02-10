@@ -51,7 +51,10 @@ const Main = () => {
           path="/post/:post_id"
           element={user ? <Post author={author} /> : <Login />}
         ></Route>
-        <Route path="/categories" element={<Categories />}></Route>
+        <Route
+          path="/categories"
+          element={author.username === "admin" ? <Categories /> : <Home />}
+        ></Route>
       </Routes>
     </div>
   );

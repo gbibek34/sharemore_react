@@ -18,8 +18,9 @@ const Home = () => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const res = await axios.get("/category");
+      const res = await axios.get("/category/");
       setCategories(res.data["msg"]);
+      console.log(res.data["msg"]);
     };
     fetchCategories();
   }, []);
@@ -60,8 +61,8 @@ const Home = () => {
             </h4>
             <ul>
               {categories.map((category) => (
-                <Link to={`/?categores=${category.name}`}>
-                  <li key={category._id}>{category.name}</li>
+                <Link to={`/?categories=${category.name}`} key={category._id}>
+                  <li>{category.name}</li>
                 </Link>
               ))}
             </ul>

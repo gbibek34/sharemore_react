@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import * as Fi from "react-icons/fi";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -22,8 +23,15 @@ const Categories = () => {
       name,
     };
     await axios.post("/category/create", newCategory);
-    location.reload();
+    window.location.reload();
   };
+
+  async function handleDelete(category_id) {
+    console.log("/category/delete/" + category_id);
+    await axios.delete("/category/delete/" + category_id);
+
+    window.location.reload();
+  }
 
   return (
     <>
@@ -31,7 +39,7 @@ const Categories = () => {
         <div className="database-info">
           <div className="p-2 count-box">
             <p>Categories Count</p>
-            <h1>5</h1>
+            <h1>{categories.length}</h1>
           </div>
         </div>
         <div className="category-list mt-5">
@@ -77,18 +85,19 @@ const Categories = () => {
                   </div>
                   <div className="modal-body">
                     <form onSubmit={handleSubmit}>
-                      <input
-                        type="text"
-                        name=""
-                        id=""
-                        placeholder="Category"
-                        onChange={(e) => setCategoryName(e.target.value)}
-                      />
-                      <input
-                        type="submit"
-                        className="btn btbn-primary"
-                        name="add_product"
-                      />
+                      <div className="form-group">
+                        <input
+                          type="text"
+                          placeholder="Category Name"
+                          className="form-control"
+                          onChange={(e) => setCategoryName(e.target.value)}
+                        />
+                      </div>
+                      <div className="text-center">
+                        <button type="submit" className="btn btn-primary ml-5">
+                          <Fi.FiPlus />
+                        </button>
+                      </div>
                     </form>
                   </div>
                 </div>
@@ -111,12 +120,14 @@ const Categories = () => {
                   </th>
                   <th style={{ fontWeight: 400 }}>{category.name}</th>
                   <td>
-                    <input
+                    <button
                       type="submit"
                       className="btn btn-block btn-sm btn-outline-danger mt-1"
-                      name="remove_product"
-                      value="Delete"
-                    />
+                      value={category._id}
+                      onClick={() => handleDelete(category._id)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
