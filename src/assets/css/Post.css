@@ -1,60 +1,109 @@
-.post-user-image {
-    width: 45px;
-    height: 45px;
+.spost-background {
+    max-width: 110rem;
+    height: 40rem;
 
-    border-radius: 50%;
-
-    object-fit: cover;
+    background: url("../images/background.jpg") no-repeat center center / cover;
 }
 
-.post-dropdown {
-    text-align: end !important;
+.spost-container {
+    z-index: -1;
 
-    color: #FFFFFF !important;
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    margin-top: -15rem;
+    padding: 3rem;
+
+    border-radius: 1.5rem;
+    background-color: antiquewhite;
 }
 
-.post-desc-cont {
+.spost-container h2 {
+    font-size: 3rem;
+    font-weight: 600;
+
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.spost-headers {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 3rem 0;
 }
 
-.post-img-main {
-    width: 400px;
-    height: auto;
+.spost-profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    border-radius: 10px !important;
-
-    object-fit: contain;
+    margin: 3rem 0;
 }
 
-.post-desc-main {
+.spost-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spost-img-container {
+    width: 6rem;
+    height: 6rem;
+
+    border-radius: 0.5rem;
+    background: no-repeat center center / cover;
+}
+
+.spost-user-details {
+    font-size: 1.2rem;
+    font-weight: 400;
+
+    margin: 0 1rem;
+
+    letter-spacing: 1px;
+
+    color: brown;
+}
+
+.spost-user-details h4 {
+    text-transform: uppercase;
+}
+
+.spost-categories {
+    font-size: 1.2rem;
+
+    display: inline-block;
+
+    padding: 0.3rem 1.5rem;
+
+    text-transform: capitalize;
+
+    border-radius: 0.2rem;
+    background-color: brown;
+}
+
+.spost-description {
     font-family: "Roboto Serif", sans-serif;
     font-size: 20px;
     font-weight: 500;
     line-height: 30px;
+
+    width: 100%;
+
+    border: none;
 }
 
-.post-desc-main::first-letter {
+.spost-description::first-letter {
     font-size: 40px;
     font-weight: 600;
 }
 
-@media(max-width: 1000px) {
-    .post-desc-cont {
-        align-items: center;
-        flex-direction: column;
-    }
+.spost-image {
+    max-width: 30rem;
+    height: auto;
+    margin-top: 20px;
 
-    .post-img-main {
-        width: 400px;
-        height: auto;
-
-        border-radius: 10px !important;
-
-        object-fit: contain;
-    }
-
-    .post-desc-main {
-        padding-top: 40px;
-    }
+    border-radius: 0.3rem;
 }

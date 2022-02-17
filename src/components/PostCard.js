@@ -34,7 +34,7 @@ const Post = ({ post }) => {
             <img src="" alt="" className="author-img" />
             <p className="ml-3 author-name-time mb-0">
               <Link
-                to={`/?user=${post.username}`}
+                to={`/posts/?user=${post.username}`}
                 style={{ textDecoration: "none" }}
               >
                 <span style={{ fontWeight: 600, color: "#4F6367" }}>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import * as Fi from "react-icons/fi";
+import { Link } from "react-router-dom";
 import { Context } from "../context/Context";
 
 const PostForm = (author) => {
@@ -32,41 +33,65 @@ const PostForm = (author) => {
   };
 
   return (
-    <div className="container-fluid p-5">
-      <div className="jumbotron shadow-sm text-center text-dark p-3">
-        <h1 className="mt-3">Tell everyone your story</h1>
+    <>
+      <div className="container-fluid p-5 post-form-container">
+        <div className="post-form-div">
+          <h1>Tell us your story</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="post-form-row">
+              <div className="column">
+                <label htmlFor="title">Title</label>
+                <input
+                  type="text"
+                  id="title"
+                  placeholder="Title Here"
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
+              <div className="column">
+                <label htmlFor="description">Description</label>
+                <textarea
+                  type="text"
+                  id="description"
+                  placeholder="Enter your description here"
+                  onChange={(e) => setDescription(e.target.value)}
+                ></textarea>
+              </div>
+              <div className="column">
+                <label>Image Preview</label>
+              </div>
+              <div className="column">
+                {file && (
+                  <img
+                    src={URL.createObjectURL(file)}
+                    alt=""
+                    className="post-form-image"
+                  />
+                )}
+              </div>
+              <div className="column">
+                <label htmlFor="fileinput" className="btn btn-wide">
+                  <Fi.FiPlus className="mr-3" />
+                  Add Image
+                </label>
+                <input
+                  type="file"
+                  id="fileinput"
+                  style={{ display: "none" }}
+                  className="btn btn-wide"
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
+              </div>
+              <div className="column">
+                <button type="submit" className="btn btn-wide">
+                  Publish
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-      <form className="p-5" onSubmit={handleSubmit}>
-        <div>
-          <h1>Preview</h1>
-          {file && <img src={URL.createObjectURL(file)} alt="" />}
-        </div>
-        <div>
-          <label htmlFor="fileinput">
-            <Fi.FiPlus />
-          </label>
-          <input
-            type="file"
-            id="fileinput"
-            style={{ display: "none" }}
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-          <input
-            type="text"
-            placeholder="Title"
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </div>
-        <div>
-          <textarea
-            type="text"
-            placeholder="Description"
-            onChange={(e) => setDescription(e.target.value)}
-          ></textarea>
-        </div>
-        <button type="submit">Publish</button>
-      </form>
-    </div>
+    </>
   );
 };
 

@@ -40,7 +40,7 @@ const Main = () => {
           path="/register"
           element={user ? <Home /> : <Register />}
         ></Route>
-        <Route path="/myposts" element={user ? <MyPosts /> : <Login />}></Route>
+        <Route path="/posts" element={user ? <MyPosts /> : <Login />}></Route>
         <Route path="/more" element={<More />}></Route>
         <Route path="/profile/:user_id" element={<Profile />}></Route>
         <Route

@@ -43,13 +43,20 @@ const Header = () => {
               </Nav.Link>
               <Nav.Link
                 as={Link}
-                to="/myposts"
+                to={`/posts/?user=${author.username}`}
                 className="nav-link navlink p-3"
               >
                 My Posts
               </Nav.Link>
               <Nav.Link as={Link} to="/more" className="nav-link navlink p-3">
                 More
+              </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="/post/create"
+                className="nav-link navlink p-3"
+              >
+                Write
               </Nav.Link>
               {user ? (
                 <NavDropdown title="Profile" className="nav-link pl-3">

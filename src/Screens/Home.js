@@ -37,13 +37,13 @@ const Home = () => {
           </p>
         </div>
         <div className="row">
-          <div className="col-lg-9 px-3">
-            <h4
+          <div className="col-lg-10 px-3">
+            <h2
               className="text-center mb-4 font-serifqs"
               style={{ fontWeight: 800, color: "#4F6367" }}
             >
               Recent Blogs
-            </h4>
+            </h2>
             <div className="row">
               {posts.map((post) => (
                 <div className="col-lg-4" key={post._id}>
@@ -52,16 +52,20 @@ const Home = () => {
               ))}
             </div>
           </div>
-          <div className="col-lg-3 px-3 home-categories">
-            <h4
+          <div className="col-lg-2 px-3 home-categories">
+            <h2
               className="text-center mb-4 font-serifqs"
               style={{ fontWeight: 800, color: "#4F6367" }}
             >
               Categories
-            </h4>
+            </h2>
             <ul>
               {categories.map((category) => (
-                <Link to={`/?categories=${category.name}`} key={category._id}>
+                <Link
+                  to={`/posts/?categories=${category.name}`}
+                  key={category._id}
+                  style={{ textDecoration: "none" }}
+                >
                   <li>{category.name}</li>
                 </Link>
               ))}

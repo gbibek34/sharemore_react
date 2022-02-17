@@ -1,13 +1,15 @@
 * {
+  font-family: "Poppins", sans-serif;
+
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
 }
 
 .heading {
   font-size: 100px;
   font-weight: bold;
+
   text-transform: uppercase;
 }
 
@@ -23,6 +25,7 @@
 .font-serifpp {
   font-family: "Poppins", sans-serif;
 }
+
 .font-serifppb {
   font-family: "Poppins", sans-serif;
   font-weight: 800;
@@ -30,4 +33,59 @@
 
 .main-container {
   min-height: 100vh;
+}
+
+.categories-home {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.home-categories ul li {
+  font-size: 18px;
+
+  position: relative;
+
+  display: table;
+
+  margin: 10px 0;
+  padding-right: 5px;
+  padding-left: 70px;
+
+  list-style: none;
+
+  color: #000;
+}
+
+.home-categories ul li::after {
+  position: absolute;
+  top: 10px;
+  left: 50px;
+
+  width: 6px;
+  height: 6px;
+
+  content: "";
+  transition: 0.5s;
+  transition-delay: 0s;
+  transform: rotate(45deg);
+
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.home-categories ul li:hover::after {
+  left: 12px;
+
+  transition-delay: 0.01s;
+  transform: rotate(45deg) scale( 1.5);
+}
+
+.home-categories ul li p {
+  position: relative;
+  z-index: 10;
+
+  padding: 5px 10px;
+
+  color: #000;
 }

@@ -5,6 +5,7 @@ import "./assets/css/PostCard.css";
 import "./assets/css/Post.css";
 import "./assets/css/Login.css";
 import "./assets/css/Categories.css";
+import "./assets/css/PostForm.css";
 
 import { Fragment } from "react";
 import { BrowserRouter } from "react-router-dom";
